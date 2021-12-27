@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:incompanies/1_implicit_animations/challenge_one.dart';
+import 'package:incompanies/1_implicit_animations/challenge_two.dart';
+import 'package:incompanies/2_controlled_animations/challenge_one.dart';
+import 'package:incompanies/2_controlled_animations/challenge_two.dart';
 
 import '1_implicit_animations/gesture_page.dart';
 import '1_implicit_animations/implicit_animations_page.dart';
@@ -51,11 +55,47 @@ class MyApp extends StatelessWidget {
                 ),
               ),
               ListTile(
+                title: Text('1 - Animações implícitas: Exercício 1'),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ChallengeOne(),
+                  ),
+                ),
+              ),
+              ListTile(
+                title: Text('1 - Animações implícitas: Exercício 2'),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ChallengeTwo(),
+                  ),
+                ),
+              ),
+              ListTile(
                 title: Text('2 - Animações Controladas'),
                 onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => ControlledAnimationsPage(),
+                  ),
+                ),
+              ),
+              ListTile(
+                title: Text('2 - Animações Controladas: Exercício 1'),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ControlledChallengeOne(),
+                  ),
+                ),
+              ),
+              ListTile(
+                title: Text('2 - Animações Controladas: Exercicio 2'),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ControlledChallengeTwo(),
                   ),
                 ),
               ),
