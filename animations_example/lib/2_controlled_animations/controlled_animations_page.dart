@@ -42,9 +42,7 @@ class _ControlledAnimationsPageState extends State<ControlledAnimationsPage>
       end: Colors.pink,
     ).animate(controller);
 
-    controller.addListener(() { 
-      print(controller.value);
-    });
+    controller.addListener(() {});
   }
 
   @override

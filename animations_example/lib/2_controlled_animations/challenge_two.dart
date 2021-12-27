@@ -10,13 +10,9 @@ class ControlledChallengeTwo extends StatefulWidget {
 class _ControlledChallengeTwoState extends State<ControlledChallengeTwo>
     with TickerProviderStateMixin {
   late AnimationController controller;
-  late Animation<Size?> sizeAnimation;
-  late Animation<Color?> colorAnimation;
 
   void toggle() {
     if (controller.value == 0) {
-      controller.animateTo(0.5);
-    } else if (controller.value == 0.5) {
       controller.forward();
     } else {
       controller.reverse();
@@ -31,19 +27,7 @@ class _ControlledChallengeTwoState extends State<ControlledChallengeTwo>
       duration: Duration(seconds: 1),
     );
 
-    sizeAnimation = SizeTween(
-      begin: Size(50, 50),
-      end: Size(100, 100),
-    ).animate(controller);
-
-    colorAnimation = ColorTween(
-      begin: Colors.blue,
-      end: Colors.pink,
-    ).animate(controller);
-
-    controller.addListener(() {
-      print(controller.value);
-    });
+    controller.addListener(() {});
   }
 
   @override
@@ -59,15 +43,27 @@ class _ControlledChallengeTwoState extends State<ControlledChallengeTwo>
       body: Center(
         child: AnimatedBuilder(
           animation: controller,
-          child: Text('Flutterando'),
           builder: (context, child) {
             return GestureDetector(
               onTap: toggle,
-              child: Container(
-                width: sizeAnimation.value?.width,
-                height: sizeAnimation.value?.height,
-                color: colorAnimation.value,
-                child: child,
+              child: Align(
+                child: ListView(
+                  children: [
+                    controller.value < 0.2
+                        ? ListTile(
+                            title: Text("ExpansionTile2"),
+                            subtitle: Text("Custom expansion arrow icon"),
+                            trailing: Icon(Icons.arrow_drop_down_circle))
+                        : const ListTile(
+                            title: Text("ExpansionTile2"),
+                            subtitle: Text("Custom expansion arrow icon"),
+                            trailing: Icon(Icons.arrow_drop_down),
+                          ),
+                    controller.value < 0.2
+                        ? ListTile(title: Text("This is tile number 2"))
+                        : SizedBox()
+                  ],
+                ),
               ),
             );
           },
